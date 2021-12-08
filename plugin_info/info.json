@@ -1,21 +1,12 @@
 {
 	"id" : "State_Capturer",
 	"name" : "State Capturer",
-	"specialAttributes" : {
-		"object" : {
-			"toto" : {"name" : {"fr_FR" : "Plop je suis un attribut spécial"},"type" : "input"},
-			"toto2" : {"name" : {"fr_FR" : "Plop je suis un attribut spécial number"},"type" : "number"}
-		},
-		"user" : {
-			"toto" : {"name" : {"fr_FR" : "Plop je suis un attribut spécial"},"type" : "select","values" : [{"value" : "1", "name" : "valeur 1"},{"value" : "plop", "name" : "valeur plop"}]}
-		}
-	},
 	"description" : {
 		"fr_FR": "Plugin qui vous permet de capturer des états de plusieurs équipements en simultanée et de rappeler ces état via une commande spécifique"
 	},
 	"licence" : "AGPL",
-	"author" : "Jeedom SAS",
-	"require" : "3.3.39",
+	"author" : "Billyben",
+	"require" : "4.0.0",
 	"category" : "programming",
 	"hasDependency" : false,
 	"hasOwnDeamon" : false,
