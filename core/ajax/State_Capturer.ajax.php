@@ -18,6 +18,8 @@
 
 try {
     require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
+    require_once dirname(__FILE__) . '/../class/State_Capturer.class.php';
+
     include_file('core', 'authentification', 'php');
 
     if (!isConnect('admin')) {
@@ -29,7 +31,24 @@ try {
     En V4 : autoriser l'exécution d'une méthode 'action' en GET en indiquant le(s) nom(s) de(s) action(s) dans un tableau en argument
   */  
     ajax::init();
+    log::add('State_Capturer','debug','╔═══ #################### AJAX action required :'.init('action'));
 
+    if (init('action') == 'update_state') { 
+      //send file
+      log::add('State_Capturer', 'debug','╠════ call Create State for id:'.init('cmdId'));
+      $result=State_Capturer::updateState(init('cmdId'));
+      ajax::success($result);
+    }
+    if (init('action') == 'delete_state') { 
+      //send file
+      log::add('State_Capturer', 'debug','╠════ call Delete State for id:'.init('cmdId'));
+      $result=State_Capturer::delete_state_configuration(init('cmdId'));
+      ajax::success($result);
+    }
+     if (init('action') == 'save_capture') { 
+      State_Capturer::save_capture(init('cmdId'), init('data'));
+      ajax::success();
+    }
 
 
     throw new Exception(__('Aucune méthode correspondante à : ', __FILE__) . init('action'));
