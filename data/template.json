@@ -1,0 +1,13 @@
+{
+    "cmd_id":{
+        "info_cmd_id":{
+            "activated":true,
+            "state":"value",
+            "type":"string, boolean, numeric",
+            "cmd":{
+                "cmd_id":"on/off/color/slider/",
+                "cmd_id":"on/off/color/slider/"
+            }
+        }
+    }
+}
