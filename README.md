@@ -1,11 +1,25 @@
-# Template de plugin pour Jeedom
+# State Capturer plugin pour Jeedom
 
-Ce "template de plugin" sert de base à la réalisation de plugins pour **Jeedom**.
+<p align="center">
+  <img width="100" src="/plugin_info/State_Capturer_icon.png">
+</p>
 
-La documentation générale relative à la conception de plugin est consultable [ici](https://doc.jeedom.com/fr_FR/dev/). Dans le détail :   
-* [Utilisation du template de plugin](https://doc.jeedom.com/fr_FR/dev/plugin_template) : Le template de plugin est une base de plugin pour Jeedom qui doit être adaptée avec l'id de votre plugin et à laquelle il suffit d'ajouter vos propres fonctions. 
-* [Fichier info.json](https://doc.jeedom.com/fr_FR/dev/structure_info_json) : Intégré depuis la version 3.0 de Jeedom, le fichier **info.json** est obligatoire pour le bon fonctionnement des plugins et leur bon déploiement sur le Market Jeedom.
-* [Icône du plugin](https://doc.jeedom.com/fr_FR/dev/Icone_de_plugin) : Afin de pouvoir être publié sur le Market Jeedom, tout plugin doit disposer d’une icône. Attention à ne pas utiliser le même code couleur que les icônes des plugins Jeedom officiels.
-* [Widget du plugin](https://doc.jeedom.com/fr_FR/dev/widget_plugin) : Présentation des différentes manières d'inclure des widgets personnalisés au plugin.
-* [Documentation du plugin](https://doc.jeedom.com/fr_FR/dev/documentation_plugin) : Présentation de la mise en place d'une documentation car un bon plugin n'est rien sans documentation adéquate.
-* [Publication du plugin](https://doc.jeedom.com/fr_FR/dev/publication_plugin) : Description des pré-requis indispensables à la publication du plugin.
+Ce plugin permet de <b>capturer différents états</b>, de différents équipements et d'appeler ces états par la suite. 
+
+Pour cela, il suffit de paramétrer dans un équipement `State Capturer` les équipements que vous souhaitez "photographier", de les positionner dans l'état souhaité, et de lancer la capture. Cette capture pourra alors être rechargée. Vous pouvez paramétrer plusieurs captures dans un seul équipement. 
+
+Chaque capture conserve les valeurs de toutes les commandes info des équipements capturés, et recherche les commandes associées. Ces commandes seront alors automatiquement appelées pour mettre à jour l'équipement. 
+Vous pouvez éditer chaque capture pour définir quelles sont les commandes à mettre à jour, modifier l'état conservé, ainsi que les commandes qui contrôlent la modification des valeurs. Si aucune commande n'est associée, le plugin essaiera de passer par la commande `event` pour mettre à jour l'information.
+
+
+
+Documentation :
+  * fr : https://github.com/Bbillyben/State_Capturer/tree/master/docs/fr_FR
+
+
+
+Forum/community : 
+  * general : https://community.jeedom.com/
+  * sujet plugin : -tbd-
+ 
+ 
