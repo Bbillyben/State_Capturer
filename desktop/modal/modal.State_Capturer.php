@@ -103,8 +103,8 @@ if (!isConnect('admin')) {
                 echo '</div>';
             echo '</div>';
             echo '{{Tableau des commandes}}';
-            echo '<div id="table_modal_SC_'.$eqCaptId.'"  class="table-responsive table_modal">';
-					echo '<table id="table_cmd_"'.$eqCaptId.' class="table table-bordered table-condensed" data-l1key="'.$eqCaptId.'">';
+            echo '<div id="table_modal_SC_'.$eqCaptId.'"  class="table-responsive">';
+					echo '<table id="table_cmd_"'.$eqCaptId.' class="table table-bordered table-condensed ui-sortable table_modal" data-l1key="'.$eqCaptId.'">';
 						echo '<thead>';
 							echo '<tr>';
                                 echo '<th>{{Acivation}}</th>';
@@ -195,7 +195,3 @@ if (!isConnect('admin')) {
 
 
 ?>
-
-
-
-

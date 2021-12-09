@@ -15,6 +15,14 @@
  * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
 
+$(".table_modal").sortable({
+  axis: "y",
+  cursor: "move",
+  items: ".cmd",
+  placeholder: "ui-state-highlight",
+  tolerance: "intersect",
+  forcePlaceholderSize: true
+});
 
 /* Permet la réorganisation des commandes dans l'équipement */
 $('.table_modal').on('click','.cmdSendSel', function () {
@@ -51,6 +59,7 @@ $('.table_modal').on('click','.addCmd', function () {
 
 // fonction de sauvegarde
 $('#bt_save_conf').on('click',function(){
+  $( ".table_modal" ).sortable( "refreshPositions" );
     var form_data = {};
     console.log('start process');
     $('.eqLogicSCmodal').each(function(index){
@@ -58,11 +67,15 @@ $('#bt_save_conf').on('click',function(){
         console.log( index + ": " +  cmdId);
         var cmdArr={};
         // les info
-        $(this).parent().find('#table_modal_SC_'+cmdId).find('tr').each(function(){
+        //$(this).parent().find('#table_modal_SC_'+cmdId).find('tr').each(function(){
+      
+      $(this).parent().find('.table_modal').sortable().find('tr').each(function(index){
             // on est dans la table_modal_SC
             var infoCmdId=$(this).find('.cmdInfoAttr[data-l1key=id]').text();
+        	console.log('id processed : '+infoCmdId);
             if(infoCmdId=='')return;
             var cmdInfoArr={};
+        	cmdInfoArr['index']=index;
             cmdInfoArr['activated']=$(this).find('.cmdInfoAttr[data-l1key=isActivated]').value();
             cmdInfoArr['state']=$(this).find('.cmdInfoAttr[data-l1key=state]').value();
             cmdInfoArr['type']=$(this).find('.cmdInfoAttr[data-l1key=type]').text();
