@@ -4,12 +4,14 @@
   <img width="100" src="/plugin_info/State_Capturer_icon.png">
 </p>
 
+
 Ce plugin permet de <b>capturer différents états</b>, de différents équipements et d'appeler ces états par la suite. 
 
 Pour cela, il suffit de paramétrer dans un équipement State Capturer les équipements que vous souhaitez "photographier", de les positionner dans l'état souhaité, et de lancer la capture. Cette capture pourra alors être rechargée. Vous pouvez paramétrer plusieurs captures dans un seul équipement. 
 
 Chaque capture conserve les valeurs de toutes les commandes info des équipements capturés, et recherche les commandes associées. Ces commandes seront alors automatiquement appelées pour mettre à jour l'équipement. 
 Vous pouvez éditer chaque capture pour définir quelles sont les commandes à mettre à jour, modifier l'état conservé, ainsi que les commandes qui contrôlent la modification des valeurs. Si aucune commande n'est associée, le plugin essaiera de passer par la commande `event` pour mettre à jour l'information.
+
 
 
 # Configuration
@@ -36,8 +38,10 @@ Vous pouvez éditer chaque capture pour définir quelles sont les commandes à m
  Quatre commandes sont créées avec l'équipement : 
 * __Dernier Etat__ : Référence la commande "etat" qui a été appelée en dernier
 * __Charger Dernier Etat__ : permet de mettre à jour avec le dernier état appelé
+
 * __Charger Prochain Etat__ : permet de mettre à jour avec l'état suivant de `Dernier Etat`. Les états sont parcourus dans l'ordre d'affichage sur l'onglet `Etats`.
 * __Charger Etat Précédent__ : permet de mettre à jour avec l'état précédent de `Dernier Etat`. Les états sont parcourus dans l'ordre inverse d'affichage sur l'onglet `Etats`.
+
 
  # Onglet Equipement à capturer
 
@@ -45,7 +49,9 @@ Vous pouvez éditer chaque capture pour définir quelles sont les commandes à m
   <img width="100%" src="/docs/img/capture.PNG">
 </p>
 
+
 Dans cet onglet, vous paramétrez les équipements dont vous souhaitez capturer les états.
+
 
 Cliquez sur `Ajouter un équipement` pour ajouter une commande à la liste, puis dans la commande créée, renseignez dans la colonne `equipement` le nom de l'équipement. Vous pouvez ouvrir la fenêtre de sélection pour choisir l'équipement. 
 
@@ -58,13 +64,16 @@ C'est tout pour cette partie!
 </p>
 
 C'est ici que vous allez capturer les états. 
+
 Cliquez sur `Ajouter un Etat`, renseignez le nom de l'état, puis sauvegardez. 
 > :warning: Vous ne pourrez pas capturer un état sans que la commande soit sauvegardée !
 
 Trois boutons sont alors disponibles : 
+
 * __Mettre à jour l'Etat__ : permet de créer ou mettre à jour la capture d'un état
 * __Afficher Config__ : ouvre une fenêtre avec le détail de la configuration, qui vous permettra de modifier la capture
 * __Supprimer Config__ : supprime la capture de la commande.
+
 
 > Vous aurez systématiquement un avertissement vous informant que l'état précédent sera écrasé, la manipulation est irréversible !
 
@@ -75,6 +84,7 @@ La capture contient la valeur de toutes les commandes info des équipements, du 
 Vous pouvez alors modifier la capture grâce au bouton `Afficher Config`
 
 ## Fenêtre de configuration de la capture
+
   <p align="center">
   <img width="100%" src="/docs/img/config_1.PNG">
 </p>
@@ -99,6 +109,7 @@ Cela peut poser problème par exemple pour les rubans led.
 Typiquement, les rubans led de la marque Lidl ont un paramètre couleur et un paramètre température de couleur. Si vous modifiez la valeur de la température après la couleur, vous n'aurez pas l'affichage de la couleur, mais le blanc à température. 
 
 => Il faut veiller à désactiver la température si on veut une couleur et à désactiver la couleur si on veut une "température" et les deux pour le off.
+
 
 
 ex pour assurer le off (comme la température et la couleur sont renseignées après l'état allumé/éteint)
