@@ -12,14 +12,26 @@ Chaque capture conserve les valeurs de toutes les commandes info des équipement
 Vous pouvez éditer chaque capture pour définir quelles sont les commandes à mettre à jour, modifié l'état conservé, ainsi que les commandes qui contrôlent la modification des valeurs. Si aucune commande n'est associée, le plugin essaira de passer par la commande `event` pour mettre à jour l'information.
 
 
+# Configuration
+  
+  1. activer le plugin
+  
+  2. Configurations :  pas de configuration
+  
+  3. créer un premier équipement
 
-Documentation :
-  * fr : https://github.com/Bbillyben/State_Capturer/tree/master/docs/fr_FR
 
+ # Equipement
+ <p align="center">
+  <img width="100%" src="">
+</p>
 
-
-Forum/community : 
-  * general : https://community.jeedom.com/
-  * sujet plugin : -tbd-
+ 
+ ### Paramètres généraux      
+ 
+ * __Nom de l'équipement__ 
+ * __Objet parent__ 
+ * __Catégorie__ 
+ * __Options__
  
  
