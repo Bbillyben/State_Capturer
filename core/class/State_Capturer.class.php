@@ -86,11 +86,14 @@ class State_Capturer extends eqLogic {
      // ---------------------------------------------------------  gestion du sav du json à partir de la config 
      public static function save_capture($cmdId, $conf){
             log::add(__CLASS__, 'debug', '╠════════    Sauvegarde du fichier à partir de la conf :'.$cmdId);
-            log::add(__CLASS__, 'debug', '╠════════    datas :'.json_encode($conf));
+            log::add(__CLASS__, 'debug', '╠════════    datas'.(is_array($conf)?1:0).' :'.json_encode($conf));
             // mise à jour des commandes-> on les recoit sous format name
             $fullArray=array();
             foreach($conf as $id=>&$eqlConf){
+              	uasort($eqlConf, function ($a, $b) {return intval($a['index']) - intval($b['index']);});
                 foreach($eqlConf as &$cmdInfoConf){
+                  // on lance le tri
+                 	unset($cmdInfoConf['index']);
                     $cmdArr=array();
                     if(!array_key_exists('cmd' ,$cmdInfoConf))$cmdInfoConf['cmd']=array();
                     foreach($cmdInfoConf['cmd'] as &$cmdName){
@@ -112,6 +115,7 @@ class State_Capturer extends eqLogic {
                         else if(preg_match(self::REG_OFF, $cmdName)){
                             $cmdArr["off"]=$id;
                         }
+                      
                     }
                      log::add(__CLASS__, 'debug', '╠════════    cmd arra :'.json_encode($cmdArr));
                      unset($cmdInfoConf['cmd']);
