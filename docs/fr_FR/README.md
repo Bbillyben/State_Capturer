@@ -22,10 +22,6 @@ Vous pouvez éditer chaque capture pour définir quelles sont les commandes à m
 
 
  # Equipement
- <p align="center">
-  <img width="100%" src="/docs/img/equipement.PNG">
-</p>
-
  
  ### Paramètres généraux      
  
