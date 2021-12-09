@@ -11,24 +11,15 @@
 	"hasDependency" : false,
 	"hasOwnDeamon" : false,
 	"maxDependancyInstallTime" : 0,
-	"changelog" : "https://jeedom.github.io/plugin-template/#language#/changelog",
-	"documentation" : "https://jeedom.github.io/plugin-template/#language#/",
-	"changelog_beta" : "https://jeedom.github.io/plugin-template/#language#/beta/changelog",
-	"documentation_beta" : "https://jeedom.github.io/plugin-template/#language#/beta/",
+	"changelog": "https://github.com/Bbillyben/State_Capturer/tree/master/docs/#language#/changelog.md",
+	"documentation": "https://github.com/Bbillyben/State_Capturer/tree/master/docs/#language#/README.md",
+	"changelog_beta": "https://github.com/Bbillyben/State_Capturer/tree/beta/docs/#language#/changelog.md",
+	"documentation_beta": "https://github.com/Bbillyben/State_Capturer/tree/beta/docs/#language#/README.md",
 	"link" : {
 		"forum":"Lien vers le forum",
-		"video" : "Lien vers une video"
 	},
 	"language": [
-		"fr_FR",
-		"en_US",
-		"es_ES",
-		"de_DE",
-		"ru_RU",
-		"id_ID",
-		"it_IT",
-		"ja_JP",
-		"pt_PT"
+		"fr_FR"
 	],
 	"compatibility": [
 		"miniplus",
