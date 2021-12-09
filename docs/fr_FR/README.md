@@ -45,7 +45,7 @@ Vous pouvez éditer chaque capture pour définir quelles sont les commandes à m
   <img width="100%" src="/docs/img/capture.PNG">
 </p>
 
-Dans cet onglet vous paramétrez les équipement dont vous souhaitez capturer les états.
+Dans cet onglet vous paramétrez les équipements dont vous souhaitez capturer les états.
 
 Cliquez sur `Ajouter un équipement` pour ajouter une commande à la liste, puis dans la commande créée, renseignez dans la colonne `equipement` le nom de l'équipement. Vous pouvez ouvrir la fenêtre de sélection pour choisir l'équipement. 
 
@@ -58,10 +58,10 @@ C'est tout pour cette partie!
 </p>
 
 C'est ici que vous allez capturer les états. 
-Cliquez sur `Ajouter un Etat`, rensignez le nom de l'état, puis sauvegardez. 
+Cliquez sur `Ajouter un Etat`, renseignez le nom de l'état, puis sauvegardez. 
 > :warning: Vous ne pourrez pas capturer un état sans que la commande soit sauvegardeé!.
 
-Trois boutons sont disponibles : 
+Trois boutons sont alors disponibles : 
 * __Mettre à jour l'Etat__ : permet de créer ou mettre à jour la capture d'un état
 * __Afficher Config__ : ouvre une fenêtre avec le détail de la configuration, qui vous permettra de modifier la capture
 * __Supprimer Config__ : supprime la capture de la commande.
@@ -71,7 +71,7 @@ Trois boutons sont disponibles :
 Une fois sauvegardée, positionnez les équipements dans l'état que vous souhaitez capturer, puis cliquez sur `Mettre à jour l'Etat`. 
 Vous avez alors une commande que vous pouvez appeler pour restaure cet état!
 
-La capture contient la valeur de toutes les commande info des équipements, du type d'information et des commandes associées à cet commande information le cas échéant.
+La capture contient la valeur de toutes les commande info des équipements, du type d'information et des commandes associées à cette commande information le cas échéant.
 Vous pouvez alors modifier la capture grace au bouton `Afficher Config`
 
 ## Fenetre de configuration de la capture
@@ -79,24 +79,24 @@ Vous pouvez alors modifier la capture grace au bouton `Afficher Config`
   <img width="100%" src="/docs/img/config_1.PNG">
 </p>
 
-Ici, sont afficher les information sauvegardées pour chaque équipement, la valeur de l'état, ainsi que les commandes associée. Le type de la commande influe sur la façon dont seront mise à jour les informations.
-Les commandes on/off, Allumer/Eteindre, Ouvrir/Fermer, qui mettent à jour les information type binaire sont automatiquement détectées, selon leur nom. 
+Ici, sont affichées les informations sauvegardées pour chaque équipement, la valeur de l'état, ainsi que les commandes associées. Le type de la commande influe sur la façon dont seront mise à jour les informations.
+Les commandes on/off, Allumer/Eteindre, Ouvrir/Fermer, qui mettent à jour les informations type binaire sont automatiquement détectées, selon leur nom. 
 
 Vous pouvez mofidier ici : 
 * __Activer__ : permet de spécifier si cette information doit être mise à jour lors du chargement de l'état
-* __Etat__ : ici est renseingé la valeur de l'état capture, que vous pouvez modifier.
-* __Commandes__ : Ce sont les commandes qu'a trouvé le plugin liées à l'information à mettre à jour. Vous pouvez selectionner une autre commande, avec le boutons vous permettant d'ouvrir la fenêtre de selection des commande, en ajouter une nouvelle, via le bouton `Ajout Commande`.
-> Seule les commandes `binaires` (type on/off) sont en double, les commande de type `couleur`, `numérique/slider` et `message` sont unique. Si il y en a plusieurs, seule la première sera utiliée. 
+* __Etat__ : ici est renseigné la valeur de l'état capture, que vous pouvez modifier.
+* __Commandes__ : Ce sont les commandes qu'a trouvé le plugin liées à l'information à mettre à jour. Vous pouvez selectionner une autre commande, avec le bouton vous permettant d'ouvrir la fenêtre de selection des commande, en ajouter une nouvelle, via le bouton `Ajout Commande`.
+> Seule les commandes `binaires` (type on/off) sont en double, les commande de type `couleur`, `numérique/slider` et `message` sont unique. Si il y en a plusieurs, seule la première sera utilisée. 
 
-> Les commande de type liste ne sont pas prise en charge, l'information sera mise à jour par l'appel à la méthode event de l'information. 
-> Pour les commande de type `message`, la valeur de l'état sera transmise dans le titre et le corps du message.
+> Les commandes de type liste ne sont pas prises en charge, l'information sera mise à jour par l'appel à la méthode `event` de l'information. 
+> Pour les commandes de type `message`, la valeur de l'état sera transmise dans le titre et le corps du message.
 
 Une fois les modifications faites, appuyer sur `Save` pour sauvegarder la capture.
 
-Note : Les information seront mise à jour pour chaque équipement dans l'ordre ou elle apparaissent dans ce tableau (non modifiable pour le moment).
+Note : Les informations seront mises à jour pour chaque équipement dans l'ordre ou elle apparaissent dans ce tableau (non modifiable pour le moment).
 Cela peux poser problème par exemple pour les ruban led. 
 
-Typiquement, les ruban led de la marque Lidl ont un paramètre couleurs et un paramètre température de couleur. Si vous modifier la valeur de la température après la couleur, vous n'aurez pas l'affichage de la couleurs, mais le blanc à température. 
+Typiquement, les ruban led de la marque Lidl ont un paramètre couleur et un paramètre température de couleur. Si vous modifiez la valeur de la température après la couleur, vous n'aurez pas l'affichage de la couleur, mais le blanc à température. 
 
 => Il faut veiller à désactiver la température si on veux une couleur et à déactiver la couleur si on veux une "température" et les deux pour le off.
 
