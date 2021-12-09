@@ -4,7 +4,7 @@
   <img width="100" src="/plugin_info/State_Capturer_icon.png">
 </p>
 
-Ce plugin permet de <b>capturer différents états</b>, de différents équipements et d'appeler ces état par la suite. 
+Ce plugin permet de <b>capturer différents états</b>, de différents équipements et d'appeler ces états par la suite. 
 
 Pour cela il suffit de paramétrer dans un équipement State Capturer les équipement que vous souhaitez "photographier", de les positionner dans l'état souhaité, et de lancer la capture. Cette capture pourra alors être rechargé. Vous pouvez paramétrer plusieurs captures dans un seul équipement. 
 
