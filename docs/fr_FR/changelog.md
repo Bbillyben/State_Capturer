@@ -1,4 +1,3 @@
-
 ### 10/12/21 
 * bug fix : save from Capture configuration (mixing all command)
 * prevent reordering from Save in capture configuration
@@ -10,3 +9,4 @@
 
 ### 08/12/21 
 * beta release
+
