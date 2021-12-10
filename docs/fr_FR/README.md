@@ -35,8 +35,9 @@ Vous pouvez éditer chaque capture pour définir quelles sont les commandes à m
  
   # Onglet Commandes
   
- Quatre commandes sont créées avec l'équipement : 
-* __Dernier Etat__ : Référence la commande "etat" qui a été appelée en dernier
+ Cinq commandes sont créées avec l'équipement : 
+* __Dernier Etat__ : Référence l'id de la commande "etat" qui a été appelée en dernier
+* __Nom Dernier Etat__ : Référence le nom de la commande "etat" qui a été appelée en dernier
 * __Charger Dernier Etat__ : permet de mettre à jour avec le dernier état appelé
 
 * __Charger Prochain Etat__ : permet de mettre à jour avec l'état suivant de `Dernier Etat`. Les états sont parcourus dans l'ordre d'affichage sur l'onglet `Etats`.

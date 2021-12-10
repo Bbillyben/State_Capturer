@@ -66,6 +66,7 @@ $('#bt_save_conf').on('click',function(){
         var cmdId= $(this).find('.cmdId[dataL1key=cmdId]').text()
         console.log( index + ": " +  cmdId);
         var cmdArr={};
+        cmdArr['index']=index;
         // les info
       $(this).parent().find('#table_modal_SC_'+cmdId).find('tr').each(function(){
       
