@@ -33,3 +33,10 @@
 .SC_CB{
 	text-align: center !important;
 }
+.table_modal>thead>tr {
+  background-color:#D2691E !important;
+  color:white !important;
+}
+.table_modal>thead>tr>th {
+	border-right: 1px solid #ea7f32 !important;
+}
