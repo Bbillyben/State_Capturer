@@ -89,7 +89,11 @@ class State_Capturer extends eqLogic {
             log::add(__CLASS__, 'debug', '╠════════    datas'.(is_array($conf)?1:0).' :'.json_encode($conf));
             // mise à jour des commandes-> on les recoit sous format name
             $fullArray=array();
+            uasort($conf, function ($a, $b) {return intval($a['index']) - intval($b['index']);});
+
+
             foreach($conf as $id=>&$eqlConf){
+                unset($eqlConf['index']);
               	uasort($eqlConf, function ($a, $b) {return intval($a['index']) - intval($b['index']);});
                 foreach($eqlConf as &$cmdInfoConf){
                   // on lance le tri
@@ -220,12 +224,28 @@ class State_Capturer extends eqLogic {
           $ctCMD->setType('info');
           $ctCMD->setSubType('string');
       }
-      // cahrge rle derier etat
+      
       $ctCMD->setType('info');
       $ctCMD->setSubType('string');
       $ctCMD->setEqLogic_id($this->getId());
       $ctCMD->save();
 
+      // dernier état nom de la Commande
+      $ctCMD = $this->getCmd(null, 'lastStateName');
+      if (!is_object($ctCMD)) {
+          $ctCMD = new State_CapturerCmd();
+          $ctCMD->setLogicalId('lastStateName');
+          $ctCMD->setIsVisible(1);
+          $ctCMD->setName(__('Nom Dernier Etat', __FILE__));
+          $ctCMD->setType('info');
+          $ctCMD->setSubType('string');
+      }
+      
+      $ctCMD->setType('info');
+      $ctCMD->setSubType('string');
+      $ctCMD->setEqLogic_id($this->getId());
+      $ctCMD->save();
+      // cahrge rle derier etat
       $ctCMD = $this->getCmd(null, 'loadLastState');
       if (!is_object($ctCMD)) {
           $ctCMD = new State_CapturerCmd();

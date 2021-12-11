@@ -111,7 +111,6 @@ function addCmdToTable(_cmd) {
       tr += '<label class="checkbox-inline" style="display:none;"><input type="checkbox" class="cmdAttr" data-l1key="isVisible"/>{{Afficher}}</label>';
       if (is_numeric(_cmd.id)) {
      tr += '<a class="btn btn-default btn-xs cmdAction" data-action="configure"><i class="fas fa-cogs"></i></a> ';
-     tr += '<a class="btn btn-default btn-xs cmdAction" data-action="test"><i class="fas fa-rss"></i> Tester</a>';
    }
       tr += '<i class="fas fa-minus-circle pull-right cmdAction cursor" data-action="remove"></i></td>';
       tr += '</tr>';

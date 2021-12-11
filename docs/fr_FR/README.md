@@ -35,8 +35,9 @@ Vous pouvez éditer chaque capture pour définir quelles sont les commandes à m
  
   # Onglet Commandes
   
- Quatre commandes sont créées avec l'équipement : 
-* __Dernier Etat__ : Référence la commande "etat" qui a été appelée en dernier
+ Cinq commandes sont créées avec l'équipement : 
+* __Dernier Etat__ : Référence l'id de la commande "etat" qui a été appelée en dernier
+* __Nom Dernier Etat__ : Référence le nom de la commande "etat" qui a été appelée en dernier
 * __Charger Dernier Etat__ : permet de mettre à jour avec le dernier état appelé
 
 * __Charger Prochain Etat__ : permet de mettre à jour avec l'état suivant de `Dernier Etat`. Les états sont parcourus dans l'ordre d'affichage sur l'onglet `Etats`.
@@ -103,7 +104,7 @@ Vous pouvez modifier ici :
 
 Une fois les modifications faites, appuyer sur `Save` pour sauvegarder la capture.
 
-Note : Les informations seront mises à jour pour chaque équipement dans l'ordre où elles apparaissent dans ce tableau (non modifiable pour le moment).
+Note : Les informations seront mises à jour pour chaque équipement dans l'ordre où elles apparaissent dans ce tableau, vous pouvez modifier l'ordre par un glissé déposé.
 Cela peut poser problème par exemple pour les rubans led. 
 
 Typiquement, les rubans led de la marque Lidl ont un paramètre couleur et un paramètre température de couleur. Si vous modifiez la valeur de la température après la couleur, vous n'aurez pas l'affichage de la couleur, mais le blanc à température. 

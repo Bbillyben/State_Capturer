@@ -93,9 +93,16 @@ class State_CapturerCmd extends cmd {
             if (is_object($ctCMD)) {
                  log::add('State_Capturer', 'debug',  '╟┄┄    update last state :');
                  $ctCMD->event($cmdId);
-                 return;
             }else{
                 log::add('State_Capturer', 'error',  'commande last state non trouvée');
+            }
+            // nom du dernier state
+            $ctCMD = $eqL->getCmd(null, 'lastStateName');
+            if (is_object($ctCMD)) {
+                 log::add('State_Capturer', 'debug',  '╟┄┄    update last state :');
+                 $ctCMD->event($cmdState->getName());
+            }else{
+                log::add('State_Capturer', 'error',  'commande last state name non trouvée');
             }
     }
 
