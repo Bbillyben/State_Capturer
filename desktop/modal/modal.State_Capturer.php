@@ -1,38 +1,3 @@
-<style>
-.label_ca-blue{
-    color: var(--sc-lightTxt-color) !important;
-    background-color: var(--al-info-color) !important;
-    width:75px;
-}
-.label_ca-yellow{
-    color: var(--sc-lightTxt-color) !important;
-    background-color: var(--al-warning-color) !important;
-    width:auto;
-}
-.label_ca {
-    
-    font-size: 12px;
-    border: none;
-    padding: 7px 8px;
-    height: 32px;
-}
-.CA_wrap {
-    display: inline !important;
-    padding: 7px 8px;
-    height: 32px;
-}
-.CA_wrap.error_ca {
-    border: solid red !important;
-}
-.SC-cmd-el{
-    font-size:10px !important;
-}
-.SC_button{
-    font-size:8px !important;
-}
-
-</style>
-
 <?php
 
 /* This file is part of Jeedom.
@@ -83,7 +48,6 @@ if (!isConnect('admin')) {
         echo '</div>';
         echo '<a class="btn btn-danger" id="bt_save_conf"><i class="fas fa-download"></i>{{Save}}</a>';
         echo '</div>';
-    echo '<form class="form-ca-opt">';
         foreach($conf as $eqCaptId=>$eqCaptDef){
             $eq=eqLogic::byId($eqCaptId);
             if (!is_object($stateCmd)) {
@@ -101,8 +65,7 @@ if (!isConnect('admin')) {
                         echo '<span id="cmdName" type="text" size="50" ><b>'.$eq->getHumanName().'</b></span>';
                     echo '</div>';  
                 echo '</div>';
-            echo '</div>';
-            echo '{{Tableau des commandes}}';
+            echo '<label  class=" label_ca"></label>';
             echo '<div id="table_modal_SC_'.$eqCaptId.'"  class="table-responsive">';
 					echo '<table id="table_cmd_"'.$eqCaptId.' class="table table-bordered table-condensed ui-sortable table_modal" data-l1key="'.$eqCaptId.'">';
 						echo '<thead>';
@@ -128,35 +91,34 @@ if (!isConnect('admin')) {
                             }
                             echo '<tr class="cmd" data-cmd_id="' . $cmdCapId . '">';
                             //activation
-                            echo '<td class="col-xs-1">';
-                            echo '<label class="checkbox-inline" ><input type="checkbox" class="cmdInfoAttr" data-l1key="isActivated" '.($def['activated']==true?'checked':'').'/>{{Activer}}</label>';
+                            echo '<td class="SC_CB">';
+                            echo '<input type="checkbox" class="cmdInfoAttr" data-l1key="isActivated" '.($def['activated']==true?'checked':'').'/>';
                             echo '</td>';
                             //id
                             echo '<td style="width:60px;">';
-                            echo '<span class="cmdInfoAttr" data-l1key="id">'.$cmdCapId.'</span>';
+                            echo '<span class="cmdInfoAttr SC-input-cont" data-l1key="id">'.$cmdCapId.'</span>';
                             echo '</td>';
                             //nom
                             echo '<td>';
-                            echo '<div class="row col-xs-8">';
+                            echo '<div class="row SC-input-cont">';
                             echo $cmdCap->getHumanName();
                             echo '</div>';
+                            echo '</td>';
                             //Type
                             echo '<td>';
-                            echo '<div class="row col-xs-8 cmdInfoAttr" data-l1key="type">';
+                            echo '<div class="row col-xs-8 cmdInfoAttr SC-input-cont" data-l1key="type">';
                             echo $def['type'];
                             echo '</div>';
                             echo '</td>';
                             // etat capturé
                             echo '<td>';
-                            echo '<div class="row col-xs-8">';
-                            echo '<input class="cmdInfoAttr form-control input-sm" data-l1key="state" placeholder="{{Nom de la commande}}" value="'.$def['state'].'">';
+                            echo '<div class="row col-xs-5">';
+                            echo '<input class="cmdInfoAttr input-sm SC-input-state" data-l1key="state" placeholder="{{Nom de la commande}}" value="'.$def['state'].'">';
                             echo '</div>';
                             echo '</td>';
                             // Force Update
-                            echo '<td>';
-                            echo '<div>';
+                            echo '<td  class="SC_CB">';
                             echo '<input type="checkbox" class="cmdInfoAttr" data-l1key="isForced" '.($def['force_update']==true?'checked':'').'/>';
-                            echo '</div>';
                             echo '</td>';
                             // les commandes
                             echo '<td class="col-xs-4 cmdContainer">';
@@ -179,7 +141,7 @@ if (!isConnect('admin')) {
                             // les commandes
                            echo '<td >';
                            echo '<span class="input-group-btn SC_button">';
-                           echo '<button type="button" class="btn btn-default cursor tooltips addCmd" title="{{Ajouter une commande}}" data-input="add_cmd" ><i class="fas fa-plus-circle"></i> {{Ajout Commande}}</button>';
+                           echo '<button type="button" class="btn btn-default cursor tooltips addCmd" title="{{Ajouter une commande}}" data-input="add_cmd" ><i class="fas fa-plus-circle"></i></button>';
                          echo '</span>';
                            echo '</div>';
                             echo '</td>';
@@ -193,13 +155,12 @@ if (!isConnect('admin')) {
 						echo '</tbody>';
 					echo '</table>';
 				echo '</div>';
-
-            echo '</form>';
+                echo '</div>';
             echo '</div>';
         }
         // les configurations
-        
         include_file('desktop', 'modal.State_Capturer', 'js', 'State_Capturer');
+        include_file('desktop', 'State_Capturer_modal', 'css', 'State_Capturer');
 
 
 ?>
