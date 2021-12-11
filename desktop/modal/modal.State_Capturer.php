@@ -95,7 +95,7 @@ if (!isConnect('admin')) {
                 echo '<div class="form-group">';
                     echo '<label  class="col-xs-2 label_ca label_ca-yellow">{{Commande}} :</label>';
                     echo '<div class="col-xs-1">';
-                        echo '<span class="cmdId" type="text" dataL1key="cmdId" >'.$eqCaptId.'</span>';
+                        echo '<span class="cmdId" type="text" data-l1key="cmdId" >'.$eqCaptId.'</span>';
                     echo '</div>';
                     echo '<div class="col-xs-5">';
                         echo '<span id="cmdName" type="text" size="50" ><b>'.$eq->getHumanName().'</b></span>';
@@ -111,7 +111,8 @@ if (!isConnect('admin')) {
 								echo '<th>{{Id}}</th>';
 								echo '<th>{{Nom}}</th>';
 								echo '<th>{{Type}}</th>';
-								echo '<th>{{Etat}}</th>';
+                                echo '<th>{{Etat}}</th>';
+                                echo '<th>{{Force Update}}</th>';
 								echo '<th>{{Commande}}</th>';
 								echo '<th>{{Action}}</th>';
 							echo '</tr>';
@@ -119,6 +120,7 @@ if (!isConnect('admin')) {
 						echo '<tbody>';
                        
                         foreach($eqCaptDef as $cmdCapId => $def){
+                            $def=array_replace_recursive(State_Capturer::DEFAULT_CMD_CONF, $def);
                             $cmdCap=cmd::byId($cmdCapId);
                             if (!is_object($cmdCap)) {
                                  log::add('State_Capturer','error', '## Modal : Command Capturée non trouvée, id :'.$cmdCapId);
@@ -143,11 +145,17 @@ if (!isConnect('admin')) {
                             echo '<div class="row col-xs-8 cmdInfoAttr" data-l1key="type">';
                             echo $def['type'];
                             echo '</div>';
-                            // etat capturé
                             echo '</td>';
+                            // etat capturé
                             echo '<td>';
                             echo '<div class="row col-xs-8">';
                             echo '<input class="cmdInfoAttr form-control input-sm" data-l1key="state" placeholder="{{Nom de la commande}}" value="'.$def['state'].'">';
+                            echo '</div>';
+                            echo '</td>';
+                            // Force Update
+                            echo '<td>';
+                            echo '<div>';
+                            echo '<input type="checkbox" class="cmdInfoAttr" data-l1key="isForced" '.($def['force_update']==true?'checked':'').'/>';
                             echo '</div>';
                             echo '</td>';
                             // les commandes

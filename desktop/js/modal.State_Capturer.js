@@ -63,22 +63,23 @@ $('#bt_save_conf').on('click',function(){
     var form_data = {};
     console.log('start process');
     $('.eqLogicSCmodal').each(function(index){
-        var cmdId= $(this).find('.cmdId[dataL1key=cmdId]').text()
+        var cmdId= $(this).find('.cmdId[data-l1key=cmdId]').text()
         console.log( index + ": " +  cmdId);
         var cmdArr={};
         cmdArr['index']=index;
         // les info
-      $(this).parent().find('#table_modal_SC_'+cmdId).find('tr').each(function(){
+      $(this).parent().find('#table_modal_SC_'+cmdId).find('tr').each(function(index2){
       
             // on est dans la table_modal_SC
             var infoCmdId=$(this).find('.cmdInfoAttr[data-l1key=id]').text();
         	console.log('id processed : '+infoCmdId);
             if(infoCmdId=='')return;
             var cmdInfoArr={};
-        	cmdInfoArr['index']=index;
+        	cmdInfoArr['index']=index2;
             cmdInfoArr['activated']=$(this).find('.cmdInfoAttr[data-l1key=isActivated]').value();
             cmdInfoArr['state']=$(this).find('.cmdInfoAttr[data-l1key=state]').value();
             cmdInfoArr['type']=$(this).find('.cmdInfoAttr[data-l1key=type]').text();
+            cmdInfoArr['force_update']=$(this).find('.cmdInfoAttr[data-l1key=isForced]').value();
             cmdInfoArr['cmd']={};
             // pour les commandes
             $(this).find('.cmdContainer').find('.cmdInfoAttr[data-l1key=cmd_act]').each(function(index){

@@ -1,3 +1,10 @@
+
+### xx/12/21 
+* bug fix : save from Capture configuration - inforation order...
+* add state vérification before update
+* Add Configuration "Force Update" to capture
+
+
 ### 10/12/21 
 * bug fix : save from Capture configuration (mixing all command)
 * prevent reordering from Save in capture configuration
