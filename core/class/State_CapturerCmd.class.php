@@ -66,6 +66,9 @@ class State_CapturerCmd extends cmd {
             }
              log::add('State_Capturer', 'debug', '╠════════════════    Mise à jour de :'.$eqL->getHumanName());
              foreach($elDef as $cmdIdState=>$stateDef){
+                
+                $stateDef=array_replace_recursive(State_Capturer::DEFAULT_CMD_CONF, $stateDef);
+
                   if($stateDef['activated']==false)continue;
                   $cmd=cmd::byId($cmdIdState);
                   if (!is_object($cmd)) {
@@ -109,6 +112,13 @@ class State_CapturerCmd extends cmd {
     private static function updateCmd($cmd,$stateDef){
         $loadState = $stateDef['state'];
 
+        // vérif si etat différents
+        $currentState = $cmd->execCmd();
+
+        if($currentState == $loadState && $stateDef['force_update']==false){
+            log::add('State_Capturer', 'debug', '╟┄┄    commande '.$cmd->getHumanName().' non mise à jour - etat identique et force update à false');
+            return true;
+        }
         // si commande binaire, on cherche le on/off
         if ($stateDef['type']=='binary') {
 	         $cmdEffName=$stateDef['state']==1?'on':'off';
@@ -142,10 +152,9 @@ class State_CapturerCmd extends cmd {
         switch ($typeCmd) {
 	        case 'color':
             case 'slider':
-                $option=array($typeCmd=>$loadState);
-		        break;
             case 'message':
-                $option=array('message'=>$loadState, 'title'=>$loadState);
+            case 'titre':
+                $option=array($typeCmd=>$loadState);
 		        break;
 	        default:
                 log::add('State_Capturer', 'debug', '### cmd type :'.$typeCmd.' is not supported => essai en event');

@@ -1,0 +1,42 @@
+.label_ca-blue{
+    color: var(--sc-lightTxt-color) !important;
+    background-color: var(--al-info-color) !important;
+	width:auto;
+	min-width:100px;
+}
+.label_ca-yellow{
+    color: var(--sc-lightTxt-color) !important;
+    background-color: var(--al-warning-color) !important;
+	width:auto;
+	min-width:100px;
+}
+.label_ca {
+    
+    font-size: 12px;
+    border: none;
+    padding: 7px 8px;
+    height: 32px;
+}
+.SC-cmd-el{
+    font-size:10px !important;
+}
+.SC_button{
+    font-size:8px !important;
+}
+.SC-input-state{
+	width:auto;
+	max-width:100px;
+}
+.SC-input-cont{
+	font-size: 12px;
+}
+.SC_CB{
+	text-align: center !important;
+}
+.table_modal>thead>tr {
+  background-color:#D2691E !important;
+  color:white !important;
+}
+.table_modal>thead>tr>th {
+	border-right: 1px solid #ea7f32 !important;
+}
