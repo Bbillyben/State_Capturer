@@ -97,6 +97,7 @@ Vous pouvez modifier ici :
 * __Activer__ : permet de spécifier si cette information doit être mise à jour lors du chargement de l'état
 * __Etat__ : ici est renseignée la valeur de l'état capture, que vous pouvez modifier.
 * __Force Update__ : pour forcer la mise à jour de l'état, même si celui-ci est égale à celui capturé
+* __Type de commande__ : Vous permet de choisir quel type de commande. La liste déroulante est contextualisé en fonction du choix de la commande (voir ci-dessous). Vous pourrez choisir "on/off" pour les commande information "binaire", et "message-corps/message-titre" pour les commande action de type message (qui mettent à jour la commande info/etat)
 * __Commandes__ : Ce sont les commandes qu'a trouvé le plugin liées à l'information à mettre à jour. Vous pouvez sélectionner une autre commande, avec le bouton vous permettant d'ouvrir la fenêtre de sélection des commandes, en ajouter une nouvelle, via le bouton `Ajout Commande`.
 > Seules les commandes `binaires` (type on/off) sont en double, les commande de type `couleur`, `numérique/slider` et `message` sont uniques. Si il y en a plusieurs, seule la première sera utilisée. 
 

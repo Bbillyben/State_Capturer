@@ -94,25 +94,13 @@ class State_Capturer extends eqLogic {
                  	unset($cmdInfoConf['index']);
                     $cmdArr=array();
                     if(!array_key_exists('cmd' ,$cmdInfoConf))$cmdInfoConf['cmd']=array();
-                    foreach($cmdInfoConf['cmd'] as &$cmdName){
+                    foreach($cmdInfoConf['cmd'] as $cmdType=>&$cmdName){
                         $cmdCol=cmd::byString($cmdName);
                         if(!is_object($cmdCol)){
                             throw new Exception('{{Commande action non trouvée}}'." : ".$cmdName);
                         }
-                        $id=$cmdCol->getId();
-                        $cmdType = $cmdCol->getSubType();
-                        $cmdName = $cmdCol->getName();
-                        $cmdName = sanitizeAccent($cmdName);// on enlève les accents
-
-                        if($cmdType!='other' ){
-                            $cmdArr[$cmdType]=$id;
-                        }else if(preg_match(self::REG_ON, $cmdName)){
-                            $cmdArr["on"]=$id;
-                    
-                        }
-                        else if(preg_match(self::REG_OFF, $cmdName)){
-                            $cmdArr["off"]=$id;
-                        }
+                        $id=$cmdCol->getId();   
+                        $cmdArr[$cmdType]=$id;
                       
                     }
                      log::add(__CLASS__, 'debug', '╠════════    cmd arra :'.json_encode($cmdArr));

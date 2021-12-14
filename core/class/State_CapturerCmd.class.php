@@ -152,10 +152,9 @@ class State_CapturerCmd extends cmd {
         switch ($typeCmd) {
 	        case 'color':
             case 'slider':
-                $option=array($typeCmd=>$loadState);
-		        break;
             case 'message':
-                $option=array('message'=>$loadState, 'title'=>$loadState);
+            case 'titre':
+                $option=array($typeCmd=>$loadState);
 		        break;
 	        default:
                 log::add('State_Capturer', 'debug', '### cmd type :'.$typeCmd.' is not supported => essai en event');

@@ -120,15 +120,34 @@ if (!isConnect('admin')) {
                             echo '<td  class="SC_CB">';
                             echo '<input type="checkbox" class="cmdInfoAttr" data-l1key="isForced" '.($def['force_update']==true?'checked':'').'/>';
                             echo '</td>';
-                            // les commandes
-                            echo '<td class="col-xs-4 cmdContainer">';
-                            foreach($def['cmd'] as $actId){
+                            // les commandes.
+                            echo '<td class="col-xs-4 cmdRowCont">';
+                            foreach($def['cmd'] as $ty => $actId){
                                  $cmdAct=cmd::byId($actId);
                                 if (!is_object($cmdAct)) {
                                      log::add('State_Capturer','error', '## Modal : Command action non trouvée, id :'.$actId);
                                     continue;
                                 }
-                                echo '<div class="input-group" >';
+                              	echo '<div class="cmdContainer">';
+                                echo '<div class="col-xs-3" >';
+                              	// les case contextuelle
+                              // choix
+                              $disa = ($ty ==  "slider" || $ty == "color" || $ty == "select")?true:false;
+                              $isBin= ($def['type'] == 'binary')?true:false;
+                              $noDisp = 'style="display:none"';
+                              		// le select
+                              		echo '<select class="cmdInfoAttr form-control SC-cmd-el" 
+                                    											data-l1key="cmd_type" '.($disa?'disabled':'').'>';
+										echo '<option value="on" class="SC-binary" '.($ty=='on'?'selected':'').' '.($isBin?'':$noDisp).'>{{On}}</option>';
+                              			echo '<option value="off" class="SC-binary" '.($ty=='off'?'selected':'').' '.($isBin?'':$noDisp).'>{{Off}}</option>';
+                              			echo '<option value="titre" class="SC-message" '.($ty=='titre'?'selected':'').' '.($isBin?$noDisp:'').'>{{Message-titre}}</option>';
+                              			echo '<option value="message" class="SC-message" '.($ty=='message'?'selected':'').' '.($isBin?$noDisp:'').'>{{Message-corps}}</option>';
+                              			echo '<option value="slider" class="SC-other" '.($ty=='slider'?'selected':'').' '.($disa?'':$noDisp).'>{{Slider}}</option>';
+                              			echo '<option value="color"  class="SC-other" '.($ty=='color'?'selected':'').' '.($disa?'':$noDisp).'>{{Color}}</option>';
+                              			echo '<option value="select"  class="SC-other" '.($ty=='select'?'selected':'').' '.($disa?'':$noDisp).'>{{select}}</option>';
+                              		echo '</select>';
+                              
+                              	echo '</div><div class="input-group" >';
                                     echo '<input class="cmdInfoAttr form-control SC-cmd-el" data-l1key="cmd_act" value="#'.$cmdAct->getHumanName().'#"/>';
                                     echo '<span class="input-group-btn">';
                                     echo '<button type="button" class="btn btn-default cursor listCmdActionMessage tooltips cmdSendSel" title="{{Rechercher un equipement}}" data-input="sendCmd"><i class="fas fa-list-alt"></i></button>';
@@ -136,6 +155,7 @@ if (!isConnect('admin')) {
                                     echo '<button type="button" class="btn btn-default cursor listCmdActionMessage tooltips cmdSendDelete" title="{{Supprimer une commande}}" data-input="delCmd"><i class="fas fa-times"></i></button>';
                                     echo '</span>';
                                 echo '</div>';
+                              echo '</div></br>';
                             }
                             echo '</td>';
                             // les commandes
