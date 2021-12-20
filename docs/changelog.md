@@ -1,3 +1,6 @@
+### 20/12/21 
+* Add doc translation
+
 
 ### 14/12/21 
 * Add configuration of type command to update state
