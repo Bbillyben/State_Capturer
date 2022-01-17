@@ -32,6 +32,9 @@ log::add('State_Capturer','debug','=============  mise à jour des equipements s
  foreach (eqLogic::byType('State_Capturer', true) as $eqLogic) {
 	log::add('State_Capturer','debug', 'mise à jour de '.$eqLogic->getHumanName());
 	$eqLogic->save();
+	 $allCmds = $eqLogic->getCmd('info');
+        // référencement des valeurs
+        foreach($allCmds as $cmdCol)$cmdCol->save();
  }
 
 }
