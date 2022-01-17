@@ -34,7 +34,12 @@ log::add('State_Capturer','debug','=============  mise à jour des equipements s
 	$eqLogic->save();
 	 $allCmds = $eqLogic->getCmd('info');
         // référencement des valeurs
-        foreach($allCmds as $cmdCol)$cmdCol->save();
+        foreach($allCmds as $cmdCol){
+			if($cmdCol->getConfiguration('cmdType')=='state'){
+				log::add('State_Capturer','debug', 'mise à jour de '.$cmdCol->getHumanName());
+				$cmdCol->save();
+			}
+        }
  }
 
 }
