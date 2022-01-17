@@ -179,6 +179,11 @@ class State_CapturerCmd extends cmd {
         if($this->getConfiguration('cmdType')=='state'){
             self::load_state($this->getId());
         }
+       if($this->getConfiguration('cmdType')=='updateState'){
+         	$idRef = $this->getValue();
+         	log::add('State_Capturer','debug', '╠════ Update state Id '.$idRef);
+         	State_Capturer::updateState($idRef);
+        }
         if($this->getLogicalId()=='loadLastState'){
             self::load_state($this->getEqLogic()->getCmd(null, 'lastState')->execCmd());
         }
@@ -196,10 +201,23 @@ class State_CapturerCmd extends cmd {
     /*     * **********************Getteur Setteur*************************** */
 
     // gestion du remove pour supprimer le fichier
+   public function save($_direct = false) {
+            
+            parent::save($_direct);
+     
+     		if($this->getConfiguration('cmdType')=='state'){
+              $eqL = eqLogic::byId($this->getEqLogic_id());
+              $eqL->check_update_cmd($this->getId(), $this->getName());
+              
+            }
+    }
     public function remove() {
-            if($this->getConfiguration('cmdType')=='state')State_Capturer::delete_state_configuration($this->getId());
+            if($this->getConfiguration('cmdType')=='state'){
+              State_Capturer::delete_state_configuration($this->getId());
+              
+              $eqL = eqLogic::byId($this->getEqLogic_id());
+              $eqL->check_delete_cmd($this->getId());
+            }
             parent::remove();
     }
 }
-
-

@@ -278,6 +278,31 @@ class State_Capturer extends eqLogic {
     public function postRemove() {
         
     }
+  
+  // fonction pour la gestion des commande de mise à jour d'un état
+  public function check_update_cmd($stateId, $name){
+    $ctCMD = $this->getCmd(null, 'update_'.$stateId);
+      if (!is_object($ctCMD)) {
+          $ctCMD = new State_CapturerCmd();
+          $ctCMD->setLogicalId('update_'.$stateId);
+          $ctCMD->setIsVisible(0);
+          $ctCMD->setConfiguration('cmdType', 'updateState');
+          $ctCMD->setType('action');
+          $ctCMD->setSubType('other');
+          
+          $ctCMD->setEqLogic_id($this->getId());
+        
+      }
+   $ctCMD->setValue($stateId);
+   $ctCMD->setName(__('Mise à jour '.$name, __FILE__));
+      
+      $ctCMD->save();
+    	    
+  }
+  public function check_delete_cmd($stateId){
+    $ctCMD = $this->getCmd(null, 'update_'.$stateId);
+    if (is_object($ctCMD)) $ctCMD->remove();
+  }
 
     
 }

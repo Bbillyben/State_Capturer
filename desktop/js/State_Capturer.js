@@ -47,7 +47,7 @@ function addCmdToTable(_cmd) {
     _cmd.configuration.cmdType = 'default';
   }
    
-   if(_cmd.configuration.cmdType=='default'){   // ########################################### les commandes par défaut
+   if(_cmd.configuration.cmdType=='default' || _cmd.configuration.cmdType=='updateState'){   // ########################################### les commandes par défaut
       var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">';
       tr += '<td style="width:60px;">';
       tr += '<span class="cmdAttr" data-l1key="id"></span>';
@@ -78,13 +78,25 @@ function addCmdToTable(_cmd) {
       tr += '<td style="min-width:80px;width:200px;">';
       if (is_numeric(_cmd.id)) {
           tr += '<a class="btn btn-default btn-xs cmdAction" data-action="configure"><i class="fas fa-cogs"></i></a> ';
-          tr += '<a class="btn btn-default btn-xs cmdAction" data-action="test"><i class="fas fa-rss"></i> Tester</a>';
+          if(_cmd.configuration.cmdType=='default')tr += '<a class="btn btn-default btn-xs cmdAction" data-action="test"><i class="fas fa-rss"></i> Tester</a>';
       }
       tr += '<td><i class="fas fa-minus-circle pull-right cmdAction cursor" data-action="remove"></i></td>';
       tr += '</tr>';
 
-      $('#table_cmd tbody').append(tr);
-      var tr = $('#table_cmd tbody tr').last();
+       /*if(_cmd.configuration.cmdType=='default'){
+         $('#table_cmd tbody').append(tr);}
+     	var tr = $('#table_cmd tbody tr').last();
+     else{
+       	$('#table_update_cmd tbody').append(tr);}
+     	var tr = $('#table_update_cmd tbody tr').last();
+     }*/
+     if(_cmd.configuration.cmdType=='default'){
+   		$('#table_cmd tbody').append(tr);
+     	var tr = $('#table_cmd tbody tr').last();
+     }else{
+       	$('#table_update_cmd tbody').append(tr);
+     	var tr = $('#table_update_cmd tbody tr').last();
+     }
   }else if(_cmd.configuration.cmdType=='equip'){ // ###########################################  les équipement à capturer
       var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">';
       tr += '<td style="width:60px;">';
@@ -270,4 +282,3 @@ function createState(cmdIdAct, actionCmd){
     }
   });
 }
-
