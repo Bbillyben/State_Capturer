@@ -20,6 +20,6 @@ Documentation :
 
 Forum/community : 
   * general : https://community.jeedom.com/
-  * sujet plugin : -tbd-
+  * sujet plugin : https://community.jeedom.com/tag/plugin-state_capturer
  
  

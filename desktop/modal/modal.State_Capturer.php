@@ -70,7 +70,7 @@ if (!isConnect('admin')) {
 					echo '<table id="table_cmd_"'.$eqCaptId.' class="table table-bordered table-condensed ui-sortable table_modal" data-l1key="'.$eqCaptId.'">';
 						echo '<thead>';
 							echo '<tr>';
-                                echo '<th>{{Acivation}}</th>';
+                                echo '<th>{{Activation}}</th>';
 								echo '<th>{{Id}}</th>';
 								echo '<th>{{Nom}}</th>';
 								echo '<th>{{Type}}</th>';

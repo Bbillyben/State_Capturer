@@ -1,5 +1,8 @@
-### 20/12/21 
+
+
+### Janvier 21 
 * Add doc translation
+* Add direct state update command
 
 
 ### 14/12/21 

@@ -294,7 +294,7 @@ class State_Capturer extends eqLogic {
         
       }
    $ctCMD->setValue($stateId);
-   $ctCMD->setName(__('Mise à jour '.$name, __FILE__));
+   $ctCMD->setName(__('Mise à jour ', __FILE__).$name);
       
       $ctCMD->save();
     	    

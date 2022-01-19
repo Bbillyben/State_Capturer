@@ -145,7 +145,7 @@ function addCmdToTable(_cmd) {
       // commande de léquiepment
       tr += '<td class="col-xs-7">';
       tr += '<span class="input-group-btn SC_button">';
-      tr += '<button type="button" class="btn btn-default cursor tooltips stateUpdateBTN" title="{{Mettre à jour l\'état}}" data-input="update_state" '+(!is_numeric(_cmd.id)?'disabled':'')+'><i class="fas fa-pencil-alt"></i> {{Mettre à jour l\'état}}</button>';
+      tr += '<button type="button" class="btn btn-default cursor tooltips stateUpdateBTN" title="{{Mettre à jour état}}" data-input="update_state" '+(!is_numeric(_cmd.id)?'disabled':'')+'><i class="fas fa-pencil-alt"></i> {{Mettre à jour état}}</button>';
       tr += '<button type="button" class="btn btn-default cursor tooltips stateConfBTN" title="{{afficher la configuration}}" data-input="update_state" '+(!is_numeric(_cmd.id)?'disabled':'')+'><i class="fas fa-cogs"></i> {{afficher Config}}</button>';
       tr += '<button type="button" class="btn btn-warning cursor tooltips delConfBTN" title="{{Supprimer la configuration}}" data-input="delete_state" '+(!is_numeric(_cmd.id)?'disabled':'')+'><i class="fas fa-cogs"></i> {{Supprimer Config}}</button>';
       tr += '</span>';
