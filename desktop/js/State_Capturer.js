@@ -57,7 +57,7 @@ function addCmdToTable(_cmd) {
       tr += '<td style="min-width:300px;width:350px;">';
       tr += '<div class="row">';
       tr += '<div class="col-xs-7">';
-      tr += '<input class="cmdAttr form-control input-sm" data-l1key="name" placeholder="{{Nom de la commande}}">';
+      tr += '<input class="cmdAttr form-control input-sm" data-l1key="name" placeholder="{{Nom de la commande}}" '+(_cmd.configuration.cmdType == 'updateState'? 'disabled':'')+' >';
       tr += '<select class="cmdAttr form-control input-sm" data-l1key="value" style="display : none;margin-top : 5px;" title="{{Commande information liée}}">';
       tr += '<option value="">{{Aucune}}</option>';
       tr += '</select>';
@@ -83,13 +83,6 @@ function addCmdToTable(_cmd) {
       tr += '<td><i class="fas fa-minus-circle pull-right cmdAction cursor" data-action="remove"></i></td>';
       tr += '</tr>';
 
-       /*if(_cmd.configuration.cmdType=='default'){
-         $('#table_cmd tbody').append(tr);}
-     	var tr = $('#table_cmd tbody tr').last();
-     else{
-       	$('#table_update_cmd tbody').append(tr);}
-     	var tr = $('#table_update_cmd tbody tr').last();
-     }*/
      if(_cmd.configuration.cmdType=='default'){
    		$('#table_cmd tbody').append(tr);
      	var tr = $('#table_cmd tbody tr').last();
