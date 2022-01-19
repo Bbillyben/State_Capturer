@@ -131,13 +131,13 @@ class State_CapturerCmd extends cmd {
                     log::add('State_Capturer', 'debug', '╟┄┄    update by command binary :'.$cmdEff->getHumanName());
                     $cmdEff->execCmd();
                 }else{
-                    log::add('State_Capturer', 'debug', '╟┄┄    update by event :'.$cmd->getHumanName());
+                    log::add('State_Capturer', 'debug', '╟┄┄    update by event :'.$cmd->getHumanName().' | value : '.$loadState);
                     $cmd->event($loadState);
                 }
                 return true;
         }
         if(count($stateDef['cmd'])==0){
-             log::add('State_Capturer', 'debug', '╟┄┄    update by event :'.$cmd->getHumanName());
+             log::add('State_Capturer', 'debug', '╟┄┄    update by event :'.$cmd->getHumanName().' | value : '.$loadState);
              $cmd->event($loadState);
              return true;
         }
@@ -164,7 +164,7 @@ class State_CapturerCmd extends cmd {
              log::add('State_Capturer', 'debug', '╟┄┄    update by cmd '.$typeCmd.', options :'.json_encode($option));
             $cmdEff->execCmd($option);
         }else{
-            log::add('State_Capturer', 'debug', '╟┄┄    update by event');
+            log::add('State_Capturer', 'debug', '╟┄┄    update by event'.' | value : '.$loadState);
             $cmd->event($loadState);
         }
         
