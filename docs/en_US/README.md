@@ -29,6 +29,10 @@ You can edit each capture to define which commands to update, to change the reta
  * __Options__
  
  # Commands tab
+ 
+   <p align="center">
+  <img width="100" src="/plugin_info/COMMAND.PNG">
+</p>
   
  Five commands are created with the equipment: 
 * __Last State__ : Reference the id of the "state" command that was last called

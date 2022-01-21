@@ -31,6 +31,10 @@ Puede editar cada captura para definir los comandos que deben actualizarse, camb
  * __Opciones__
  
 # Ficha de comandos
+
+  <p align="center">
+  <img width="100" src="/plugin_info/COMMAND.PNG">
+</p>
   
  Se crean cinco comandos con el equipo: 
 * __Last State__ : Referencia al id del comando "state" que fue llamado por última vez

@@ -35,6 +35,11 @@ Vous pouvez éditer chaque capture pour définir quelles sont les commandes à m
  
   # Onglet Commandes
   
+  <p align="center">
+  <img width="100" src="/plugin_info/COMMAND.PNG">
+</p>
+
+  
  Cinq commandes sont créées avec l'équipement : 
 * __Dernier Etat__ : Référence l'id de la commande "etat" qui a été appelée en dernier
 * __Nom Dernier Etat__ : Référence le nom de la commande "etat" qui a été appelée en dernier
@@ -50,6 +55,7 @@ Leur nom est généré automatiquement et ne peuvent être modifié, et elles ne
 Ces commandes ne peuvent être appelées directement dans la configuration du plugin, mais sont disponibles avec l'équipement, notamment dans les scénarios.
 
 :warning: Aucune confirmation ne sera demandées lors de l'appel à ces commandes, et l'état précédent sera écrasé définitivement.
+
 
 
 
