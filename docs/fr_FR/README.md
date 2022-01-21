@@ -44,6 +44,15 @@ Vous pouvez éditer chaque capture pour définir quelles sont les commandes à m
 * __Charger Etat Précédent__ : permet de mettre à jour avec l'état précédent de `Dernier Etat`. Les états sont parcourus dans l'ordre inverse d'affichage sur l'onglet `Etats`.
 
 
+Une table secondaire regroupe les commandes permettant de mettre à jour les états à la volée. 
+Ces commandes sont crées automatiquement à la sauvegarde des états. 
+Leur nom est généré automatiquement et ne peuvent être modifié, et elles ne sont pas affichées par défaut dans le widget.
+Ces commandes ne peuvent être appelées directement dans la configuration du plugin, mais sont disponibles avec l'équipement, notamment dans les scénarios.
+
+:warning: Aucune confirmation ne sera demandées lors de l'appel à ces commandes, et l'état précédent sera écrasé définitivement.
+
+
+
  # Onglet Equipement à capturer
 
  <p align="center">

@@ -38,6 +38,14 @@ You can edit each capture to define which commands to update, to change the reta
 * __Load Next State__ : allows to update with the next state of `Last State`. The states are browsed in order of display on the `States` tab.
 * __Load Previous State__: updates with the previous state of `Last State'. The states are scrolled through in reverse order of display on the `States' tab.
 
+A secondary table contains the commands used to update the states on the fly. 
+These commands are created automatically when the states are saved. 
+Their name is automatically generated and cannot be modified, and they are not displayed by default in the widget.
+These commands cannot be called directly in the plugin configuration, but are available with the equipment, especially in the scenarios.
+
+:warning: No confirmation will be requested when calling these commands, and the previous state will be permanently overwritten.
+
+
  # Equipment to Capture tab.
 
   <p align="center">

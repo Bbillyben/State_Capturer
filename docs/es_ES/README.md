@@ -40,6 +40,13 @@ Puede editar cada captura para definir los comandos que deben actualizarse, camb
 * __Cargar el siguiente estado__ : se actualiza con el siguiente estado de `Last State`. Los estados se visualizan por orden en la pestaña "Estados".
 * __Cargar estado anterior__: se actualiza con el estado anterior de `Último estado'. Los estados se visualizan en orden inverso en la pestaña "Estados".
 
+Una tabla secundaria contiene los comandos utilizados para actualizar los estados sobre la marcha. 
+Estos comandos se crean automáticamente cuando se guardan los estados. 
+Su nombre se genera automáticamente y no se puede modificar, y no se muestran por defecto en el widget.
+Estos comandos no pueden ser llamados directamente en la configuración del plugin, pero están disponibles con el equipo, especialmente en los escenarios.
+
+:aviso: No se pedirá confirmación al llamar a estos comandos, y el estado anterior se sobrescribirá permanentemente.
+
 
  # Pestaña de Equipos a Capturar
  
