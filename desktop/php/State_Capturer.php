@@ -163,6 +163,24 @@ $eqLogics = eqLogic::byType($plugin->getId());
 						</tbody>
 					</table>
 				</div>
+                <div class="table-responsive">
+                <br/><br/>
+                <p> {{Commandes de mise à jour des états}}</p>
+				<table id="table_update_cmd" class="table table-bordered table-condensed">
+						<thead>
+							<tr>
+								<th>{{Id}}</th>
+								<th>{{Nom}}</th>
+								<th>{{Type}}</th>
+								<th>{{Paramètres}}</th>
+								<th>{{Options}}</th>
+								<th>{{Action}}</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
 			</div><!-- /.tabpanel #commandtab-->
 			<!-- Onglet des etats capturés -->
 			<div role="tabpanel" class="tab-pane" id="etattab">
