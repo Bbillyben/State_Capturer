@@ -30,8 +30,8 @@ You can edit each capture to define which commands to update, to change the reta
  
  # Commands tab
  
-   <p align="center">
-  <img width="100" src="/plugin_info/COMMAND.PNG">
+  <p align="center">
+  <img src="/docs/img/COMMAND.PNG">
 </p>
   
  Five commands are created with the equipment: 

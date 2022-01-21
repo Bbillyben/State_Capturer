@@ -34,11 +34,10 @@ Vous pouvez éditer chaque capture pour définir quelles sont les commandes à m
  
  
   # Onglet Commandes
-  
-  <p align="center">
-  <img width="100" src="/plugin_info/COMMAND.PNG">
-</p>
 
+  <p align="center">
+  <img src="/docs/img/COMMAND.PNG">
+</p>
   
  Cinq commandes sont créées avec l'équipement : 
 * __Dernier Etat__ : Référence l'id de la commande "etat" qui a été appelée en dernier
