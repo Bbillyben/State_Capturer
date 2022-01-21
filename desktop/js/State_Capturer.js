@@ -78,7 +78,7 @@ function addCmdToTable(_cmd) {
       tr += '<td style="min-width:80px;width:200px;">';
       if (is_numeric(_cmd.id)) {
           tr += '<a class="btn btn-default btn-xs cmdAction" data-action="configure"><i class="fas fa-cogs"></i></a> ';
-          if(_cmd.configuration.cmdType=='default')tr += '<a class="btn btn-default btn-xs cmdAction" data-action="test"><i class="fas fa-rss"></i> Tester</a>';
+          if(_cmd.configuration.cmdType=='default')tr += '<a class="btn btn-default btn-xs cmdAction" data-action="test"><i class="fas fa-rss"></i>{{Tester}}</a>';
       }
       tr += '<td><i class="fas fa-minus-circle pull-right cmdAction cursor" data-action="remove"></i></td>';
       tr += '</tr>';
@@ -157,7 +157,7 @@ function addCmdToTable(_cmd) {
       tr += '<td class="col-xs-2">';
       if (is_numeric(_cmd.id)) {
              tr += '<a class="btn btn-default btn-xs cmdAction" data-action="configure"><i class="fas fa-cogs"></i></a> ';
-             tr += '<a class="btn btn-default btn-xs cmdAction" data-action="test"><i class="fas fa-rss"></i> Tester</a>';
+             tr += '<a class="btn btn-default btn-xs cmdAction" data-action="test"><i class="fas fa-rss"></i>{{Tester}}</a>';
         }
       tr += '<i class="fas fa-minus-circle pull-right cmdAction cursor" data-action="remove"></i>';
       tr += '</td>';
