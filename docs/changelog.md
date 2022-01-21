@@ -1,7 +1,7 @@
 
 
 ### Janvier 21 
-* Add doc translation
+* Add doc & plugin translation
 * Add direct state update command
 
 
