@@ -102,6 +102,7 @@
       "Ajouter un Etat":"Añadir un Estado",
       "commandes":"comandos",
       "Ajouter un equipement":"Añadir un equipo",
-      "equipement":"equipo"
+      "equipement":"equipo",
+     "Dernier Etat":"Último estado" 
    }
 }
