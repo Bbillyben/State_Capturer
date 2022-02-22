@@ -1,6 +1,7 @@
+### Feb 2022
+* add tabular support (v4.2) as well as card information in plugin equipement view
 
-
-### Janvier 21 
+### Janvier 22
 * Add doc translation
 * Add direct state update command
 

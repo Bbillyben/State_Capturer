@@ -45,7 +45,22 @@ class State_Capturer extends eqLogic {
         return $eqL->update_state($cmdId);
     }
 
+	public static function getLastState($eqId){
+     log::add(__CLASS__, 'debug', 'call get last state static, id :'.$eqId);
+     if($eqId=='' or $eqId==0)return false;
+      $eqL=eqLogic::byId($eqId);
 
+      if(!is_object($eqL)){
+        log::add('State_Capturer', 'error', '####### Get EqlL error '.$eqId.' not found######');
+        return false;
+      }
+    	$ctCMD = $eqL->getCmd(null, 'lastStateName');
+      if (!is_object($ctCMD)) {
+        log::add('State_Capturer', 'error', '####### Get State CMD error '.$eqId.' not found######');
+        return false;
+      }
+      return array($ctCMD->execCmd(),$ctCMD->getValueDate());
+    }
     // ---------------------------------------------------------  gestion fichier de configuration
     public static function get_state_configuration($cmdId){
         log::add(__CLASS__, 'debug', '╠════════    récupération fichier pour :'.$cmdId);

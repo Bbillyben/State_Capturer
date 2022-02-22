@@ -42,10 +42,16 @@ $eqLogics = eqLogic::byType($plugin->getId());
 			echo '<div class="eqLogicThumbnailContainer">';
 			foreach ($eqLogics as $eqLogic) {
 				$opacity = ($eqLogic->getIsEnable()) ? '' : 'disableCard';
-				echo '<div class="eqLogicDisplayCard cursor '.$opacity.'" data-eqLogic_id="' . $eqLogic->getId() . '">';
+				echo '<div class="eqLogicDisplayCard stcapt_box cursor '.$opacity.'" data-eqLogic_id="' . $eqLogic->getId() . '">';
 				echo '<img src="' . $plugin->getPathImgIcon() . '"/>';
 				echo '<br>';
 				echo '<span class="name">' . $eqLogic->getHumanName(true, true) . '</span>';
+                  echo '<span class="displayTableRight">';
+                  $lastState=State_Capturer::getLastState($eqLogic->getId());
+                  echo '<span class="stcapt_text">{{Dernier Etat}} <i>'.$lastState[0].'</i></span>';
+              		echo '<span class="stcapt_text row">'.$lastState[1].'</span>';
+                  echo '</span>';
+              
 				echo '</div>';
 			}
 			echo '</div>';

@@ -2,3 +2,20 @@
 	padding-right: 12px;
 	margin-right: 25px !important;
 }
+
+div.eqLogicThumbnailContainer .eqLogicDisplayCard.stcapt_box{
+	height:auto !important;
+}
+.stcapt_text{
+  font-size:smaller;
+}
+.stcapt_text i{
+	font-weight:bold;
+}
+.stcapt_text.row{
+	display:block;
+}
+.displayAsTable .stcapt_text.row{
+	display: inline-block !important;
+	margin-left: 12px;
+}
