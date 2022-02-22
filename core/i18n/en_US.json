@@ -102,6 +102,7 @@
       "Ajouter un Etat":"Add a State",
       "commandes":"commands",
       "Ajouter un equipement":"Add an equipment",
-      "equipement":"equipment"
+      "equipement":"equipment",
+     "Dernier Etat":"Last State" 
    }
 }
