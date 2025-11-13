@@ -34,13 +34,28 @@ Vous pouvez éditer chaque capture pour définir quelles sont les commandes à m
  
  
   # Onglet Commandes
+
+  <p align="center">
+  <img src="/docs/img/COMMAND.PNG">
+</p>
   
- Quatre commandes sont créées avec l'équipement : 
-* __Dernier Etat__ : Référence la commande "etat" qui a été appelée en dernier
+ Cinq commandes sont créées avec l'équipement : 
+* __Dernier Etat__ : Référence l'id de la commande "etat" qui a été appelée en dernier
+* __Nom Dernier Etat__ : Référence le nom de la commande "etat" qui a été appelée en dernier
 * __Charger Dernier Etat__ : permet de mettre à jour avec le dernier état appelé
 
 * __Charger Prochain Etat__ : permet de mettre à jour avec l'état suivant de `Dernier Etat`. Les états sont parcourus dans l'ordre d'affichage sur l'onglet `Etats`.
 * __Charger Etat Précédent__ : permet de mettre à jour avec l'état précédent de `Dernier Etat`. Les états sont parcourus dans l'ordre inverse d'affichage sur l'onglet `Etats`.
+
+
+Une table secondaire regroupe les commandes permettant de mettre à jour les états à la volée. 
+Ces commandes sont crées automatiquement à la sauvegarde des états. 
+Leur nom est généré automatiquement et ne peut être modifié, et elles ne sont pas affichées par défaut dans le widget.
+Ces commandes ne peuvent être appelées directement dans la configuration du plugin, mais sont disponibles avec l'équipement, notamment dans les scénarios.
+
+:warning: Aucune confirmation ne sera demandées lors de l'appel à ces commandes, et l'état précédent sera écrasé définitivement.
+
+
 
 
  # Onglet Equipement à capturer
@@ -95,6 +110,8 @@ Les commandes on/off, Allumer/Eteindre, Ouvrir/Fermer, qui mettent à jour les i
 Vous pouvez modifier ici : 
 * __Activer__ : permet de spécifier si cette information doit être mise à jour lors du chargement de l'état
 * __Etat__ : ici est renseignée la valeur de l'état capture, que vous pouvez modifier.
+* __Force Update__ : pour forcer la mise à jour de l'état, même si celui-ci est égal à celui capturé.
+* __Type de commande__ : Vous permet de choisir quel type de commande. La liste déroulante est contextualisée en fonction du choix de la commande (voir ci-dessous). Vous pourrez choisir "on/off" pour les commandes information "binaire", et "message-corps/message-titre" pour les commandes action de type message (qui mettent à jour la commande info/etat)
 * __Commandes__ : Ce sont les commandes qu'a trouvé le plugin liées à l'information à mettre à jour. Vous pouvez sélectionner une autre commande, avec le bouton vous permettant d'ouvrir la fenêtre de sélection des commandes, en ajouter une nouvelle, via le bouton `Ajout Commande`.
 > Seules les commandes `binaires` (type on/off) sont en double, les commande de type `couleur`, `numérique/slider` et `message` sont uniques. Si il y en a plusieurs, seule la première sera utilisée. 
 
@@ -103,7 +120,7 @@ Vous pouvez modifier ici :
 
 Une fois les modifications faites, appuyer sur `Save` pour sauvegarder la capture.
 
-Note : Les informations seront mises à jour pour chaque équipement dans l'ordre où elles apparaissent dans ce tableau (non modifiable pour le moment).
+Note : Les informations seront mises à jour pour chaque équipement dans l'ordre où elles apparaissent dans ce tableau, vous pouvez modifier l'ordre par un glissé déposé.
 Cela peut poser problème par exemple pour les rubans led. 
 
 Typiquement, les rubans led de la marque Lidl ont un paramètre couleur et un paramètre température de couleur. Si vous modifiez la valeur de la température après la couleur, vous n'aurez pas l'affichage de la couleur, mais le blanc à température. 

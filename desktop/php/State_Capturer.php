@@ -42,10 +42,16 @@ $eqLogics = eqLogic::byType($plugin->getId());
 			echo '<div class="eqLogicThumbnailContainer">';
 			foreach ($eqLogics as $eqLogic) {
 				$opacity = ($eqLogic->getIsEnable()) ? '' : 'disableCard';
-				echo '<div class="eqLogicDisplayCard cursor '.$opacity.'" data-eqLogic_id="' . $eqLogic->getId() . '">';
+				echo '<div class="eqLogicDisplayCard stcapt_box cursor '.$opacity.'" data-eqLogic_id="' . $eqLogic->getId() . '">';
 				echo '<img src="' . $plugin->getPathImgIcon() . '"/>';
 				echo '<br>';
 				echo '<span class="name">' . $eqLogic->getHumanName(true, true) . '</span>';
+                  echo '<span class="displayTableRight">';
+                  $lastState=State_Capturer::getLastState($eqLogic->getId());
+                  echo '<span class="stcapt_text">{{Dernier Etat}} <i>'.$lastState[0].'</i></span>';
+              		echo '<span class="stcapt_text row">'.$lastState[1].'</span>';
+                  echo '</span>';
+              
 				echo '</div>';
 			}
 			echo '</div>';
@@ -149,6 +155,24 @@ $eqLogics = eqLogic::byType($plugin->getId());
 				<br/><br/>
 				<div class="table-responsive">
 					<table id="table_cmd" class="table table-bordered table-condensed">
+						<thead>
+							<tr>
+								<th>{{Id}}</th>
+								<th>{{Nom}}</th>
+								<th>{{Type}}</th>
+								<th>{{Paramètres}}</th>
+								<th>{{Options}}</th>
+								<th>{{Action}}</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+                <div class="table-responsive">
+                <br/><br/>
+                <p> {{Commandes de mise à jour des états}}</p>
+				<table id="table_update_cmd" class="table table-bordered table-condensed">
 						<thead>
 							<tr>
 								<th>{{Id}}</th>

@@ -26,19 +26,13 @@ class State_Capturer extends eqLogic {
 
      const STATE_PATH=__DIR__  . '/../../data/';
      const STATE_PREFIX="STATE_";
-     const DEFAULT_CMD_CONF=array("activated"=>true,"state"=>null,"type"=>"string", "cmd"=>array());
-     const unwanted_array = array(    'Š'=>'S', 'š'=>'s', 'Ž'=>'Z', 'ž'=>'z', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
-                            'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U',
-                            'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss', 'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c',
-                            'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o',
-                            'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y' );
-
+     const DEFAULT_CMD_CONF=array("activated"=>true,"force_update"=>false, "state"=>null,"type"=>"string", "cmd"=>array());
      const REG_ON='/on|allum|start|ouvrir|open|encender/i';
      const REG_OFF='/off|etein|stop|fermer|close|desactivar/i';
     
     public static function updateState($cmdId){
         log::add(__CLASS__, 'debug', '╠═══════════════    Demande de creation etat pour id :'.$cmdId);
-        $cmd=cmd::byId($cmdId);
+        $cmd=cmd::byId($cmdId); 
         if (!is_object($cmd)) {
              throw new Exception('{{Commande non trouvée}}');
         }
@@ -51,7 +45,22 @@ class State_Capturer extends eqLogic {
         return $eqL->update_state($cmdId);
     }
 
+	public static function getLastState($eqId){
+     log::add(__CLASS__, 'debug', 'call get last state static, id :'.$eqId);
+     if($eqId=='' or $eqId==0)return false;
+      $eqL=eqLogic::byId($eqId);
 
+      if(!is_object($eqL)){
+        log::add('State_Capturer', 'error', '####### Get EqlL error '.$eqId.' not found######');
+        return false;
+      }
+    	$ctCMD = $eqL->getCmd(null, 'lastStateName');
+      if (!is_object($ctCMD)) {
+        log::add('State_Capturer', 'error', '####### Get State CMD error '.$eqId.' not found######');
+        return false;
+      }
+      return array($ctCMD->execCmd(),$ctCMD->getValueDate());
+    }
     // ---------------------------------------------------------  gestion fichier de configuration
     public static function get_state_configuration($cmdId){
         log::add(__CLASS__, 'debug', '╠════════    récupération fichier pour :'.$cmdId);
@@ -89,32 +98,24 @@ class State_Capturer extends eqLogic {
             log::add(__CLASS__, 'debug', '╠════════    datas'.(is_array($conf)?1:0).' :'.json_encode($conf));
             // mise à jour des commandes-> on les recoit sous format name
             $fullArray=array();
+            uasort($conf, function ($a, $b) {return intval($a['index']) - intval($b['index']);});
+
+
             foreach($conf as $id=>&$eqlConf){
+                unset($eqlConf['index']);
               	uasort($eqlConf, function ($a, $b) {return intval($a['index']) - intval($b['index']);});
                 foreach($eqlConf as &$cmdInfoConf){
                   // on lance le tri
                  	unset($cmdInfoConf['index']);
                     $cmdArr=array();
                     if(!array_key_exists('cmd' ,$cmdInfoConf))$cmdInfoConf['cmd']=array();
-                    foreach($cmdInfoConf['cmd'] as &$cmdName){
+                    foreach($cmdInfoConf['cmd'] as $cmdType=>&$cmdName){
                         $cmdCol=cmd::byString($cmdName);
                         if(!is_object($cmdCol)){
                             throw new Exception('{{Commande action non trouvée}}'." : ".$cmdName);
                         }
-                        $id=$cmdCol->getId();
-                        $cmdType = $cmdCol->getSubType();
-                        $cmdName = $cmdCol->getName();
-                        $cmdName = sanitizeAccent($cmdName);// on enlève les accents
-
-                        if($cmdType!='other' ){
-                            $cmdArr[$cmdType]=$id;
-                        }else if(preg_match(self::REG_ON, $cmdName)){
-                            $cmdArr["on"]=$id;
-                    
-                        }
-                        else if(preg_match(self::REG_OFF, $cmdName)){
-                            $cmdArr["off"]=$id;
-                        }
+                        $id=$cmdCol->getId();   
+                        $cmdArr[$cmdType]=$id;
                       
                     }
                      log::add(__CLASS__, 'debug', '╠════════    cmd arra :'.json_encode($cmdArr));
@@ -220,12 +221,28 @@ class State_Capturer extends eqLogic {
           $ctCMD->setType('info');
           $ctCMD->setSubType('string');
       }
-      // cahrge rle derier etat
+      
       $ctCMD->setType('info');
       $ctCMD->setSubType('string');
       $ctCMD->setEqLogic_id($this->getId());
       $ctCMD->save();
 
+      // dernier état nom de la Commande
+      $ctCMD = $this->getCmd(null, 'lastStateName');
+      if (!is_object($ctCMD)) {
+          $ctCMD = new State_CapturerCmd();
+          $ctCMD->setLogicalId('lastStateName');
+          $ctCMD->setIsVisible(1);
+          $ctCMD->setName(__('Nom Dernier Etat', __FILE__));
+          $ctCMD->setType('info');
+          $ctCMD->setSubType('string');
+      }
+      
+      $ctCMD->setType('info');
+      $ctCMD->setSubType('string');
+      $ctCMD->setEqLogic_id($this->getId());
+      $ctCMD->save();
+      // cahrge rle derier etat
       $ctCMD = $this->getCmd(null, 'loadLastState');
       if (!is_object($ctCMD)) {
           $ctCMD = new State_CapturerCmd();
@@ -276,6 +293,31 @@ class State_Capturer extends eqLogic {
     public function postRemove() {
         
     }
+  
+  // fonction pour la gestion des commande de mise à jour d'un état
+  public function check_update_cmd($stateId, $name){
+    $ctCMD = $this->getCmd(null, 'update_'.$stateId);
+      if (!is_object($ctCMD)) {
+          $ctCMD = new State_CapturerCmd();
+          $ctCMD->setLogicalId('update_'.$stateId);
+          $ctCMD->setIsVisible(0);
+          $ctCMD->setConfiguration('cmdType', 'updateState');
+          $ctCMD->setType('action');
+          $ctCMD->setSubType('other');
+          
+          $ctCMD->setEqLogic_id($this->getId());
+        
+      }
+   $ctCMD->setValue($stateId);
+   $ctCMD->setName(__('Mise à jour ', __FILE__).$name);
+      
+      $ctCMD->save();
+    	    
+  }
+  public function check_delete_cmd($stateId){
+    $ctCMD = $this->getCmd(null, 'update_'.$stateId);
+    if (is_object($ctCMD)) $ctCMD->remove();
+  }
 
     
 }

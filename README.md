@@ -15,11 +15,12 @@ Vous pouvez éditer chaque capture pour définir quelles sont les commandes à m
 
 Documentation :
   * fr : https://github.com/Bbillyben/State_Capturer/tree/master/docs/fr_FR
-
+  * en : https://github.com/Bbillyben/State_Capturer/tree/master/docs/en_US
+  * es : https://github.com/Bbillyben/State_Capturer/tree/master/docs/es_ES
 
 
 Forum/community : 
   * general : https://community.jeedom.com/
-  * sujet plugin : -tbd-
+  * sujet plugin : https://community.jeedom.com/tag/plugin-state_capturer
  
  

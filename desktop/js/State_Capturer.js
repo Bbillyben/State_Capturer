@@ -47,7 +47,7 @@ function addCmdToTable(_cmd) {
     _cmd.configuration.cmdType = 'default';
   }
    
-   if(_cmd.configuration.cmdType=='default'){   // ########################################### les commandes par défaut
+   if(_cmd.configuration.cmdType=='default' || _cmd.configuration.cmdType=='updateState'){   // ########################################### les commandes par défaut
       var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">';
       tr += '<td style="width:60px;">';
       tr += '<span class="cmdAttr" data-l1key="id"></span>';
@@ -57,7 +57,7 @@ function addCmdToTable(_cmd) {
       tr += '<td style="min-width:300px;width:350px;">';
       tr += '<div class="row">';
       tr += '<div class="col-xs-7">';
-      tr += '<input class="cmdAttr form-control input-sm" data-l1key="name" placeholder="{{Nom de la commande}}">';
+      tr += '<input class="cmdAttr form-control input-sm" data-l1key="name" placeholder="{{Nom de la commande}}" '+(_cmd.configuration.cmdType == 'updateState'? 'disabled':'')+' >';
       tr += '<select class="cmdAttr form-control input-sm" data-l1key="value" style="display : none;margin-top : 5px;" title="{{Commande information liée}}">';
       tr += '<option value="">{{Aucune}}</option>';
       tr += '</select>';
@@ -78,13 +78,18 @@ function addCmdToTable(_cmd) {
       tr += '<td style="min-width:80px;width:200px;">';
       if (is_numeric(_cmd.id)) {
           tr += '<a class="btn btn-default btn-xs cmdAction" data-action="configure"><i class="fas fa-cogs"></i></a> ';
-          tr += '<a class="btn btn-default btn-xs cmdAction" data-action="test"><i class="fas fa-rss"></i> Tester</a>';
+          if(_cmd.configuration.cmdType=='default')tr += '<a class="btn btn-default btn-xs cmdAction" data-action="test"><i class="fas fa-rss"></i>{{Tester}}</a>';
       }
       tr += '<td><i class="fas fa-minus-circle pull-right cmdAction cursor" data-action="remove"></i></td>';
       tr += '</tr>';
 
-      $('#table_cmd tbody').append(tr);
-      var tr = $('#table_cmd tbody tr').last();
+     if(_cmd.configuration.cmdType=='default'){
+   		$('#table_cmd tbody').append(tr);
+     	var tr = $('#table_cmd tbody tr').last();
+     }else{
+       	$('#table_update_cmd tbody').append(tr);
+     	var tr = $('#table_update_cmd tbody tr').last();
+     }
   }else if(_cmd.configuration.cmdType=='equip'){ // ###########################################  les équipement à capturer
       var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">';
       tr += '<td style="width:60px;">';
@@ -111,7 +116,6 @@ function addCmdToTable(_cmd) {
       tr += '<label class="checkbox-inline" style="display:none;"><input type="checkbox" class="cmdAttr" data-l1key="isVisible"/>{{Afficher}}</label>';
       if (is_numeric(_cmd.id)) {
      tr += '<a class="btn btn-default btn-xs cmdAction" data-action="configure"><i class="fas fa-cogs"></i></a> ';
-     tr += '<a class="btn btn-default btn-xs cmdAction" data-action="test"><i class="fas fa-rss"></i> Tester</a>';
    }
       tr += '<i class="fas fa-minus-circle pull-right cmdAction cursor" data-action="remove"></i></td>';
       tr += '</tr>';
@@ -141,7 +145,7 @@ function addCmdToTable(_cmd) {
       // commande de léquiepment
       tr += '<td class="col-xs-7">';
       tr += '<span class="input-group-btn SC_button">';
-      tr += '<button type="button" class="btn btn-default cursor tooltips stateUpdateBTN" title="{{Mettre à jour l\'état}}" data-input="update_state" '+(!is_numeric(_cmd.id)?'disabled':'')+'><i class="fas fa-pencil-alt"></i> {{Mettre à jour l\'état}}</button>';
+      tr += '<button type="button" class="btn btn-default cursor tooltips stateUpdateBTN" title="{{Mettre à jour état}}" data-input="update_state" '+(!is_numeric(_cmd.id)?'disabled':'')+'><i class="fas fa-pencil-alt"></i> {{Mettre à jour état}}</button>';
       tr += '<button type="button" class="btn btn-default cursor tooltips stateConfBTN" title="{{afficher la configuration}}" data-input="update_state" '+(!is_numeric(_cmd.id)?'disabled':'')+'><i class="fas fa-cogs"></i> {{afficher Config}}</button>';
       tr += '<button type="button" class="btn btn-warning cursor tooltips delConfBTN" title="{{Supprimer la configuration}}" data-input="delete_state" '+(!is_numeric(_cmd.id)?'disabled':'')+'><i class="fas fa-cogs"></i> {{Supprimer Config}}</button>';
       tr += '</span>';
@@ -153,7 +157,7 @@ function addCmdToTable(_cmd) {
       tr += '<td class="col-xs-2">';
       if (is_numeric(_cmd.id)) {
              tr += '<a class="btn btn-default btn-xs cmdAction" data-action="configure"><i class="fas fa-cogs"></i></a> ';
-             tr += '<a class="btn btn-default btn-xs cmdAction" data-action="test"><i class="fas fa-rss"></i> Tester</a>';
+             tr += '<a class="btn btn-default btn-xs cmdAction" data-action="test"><i class="fas fa-rss"></i>{{Tester}}</a>';
         }
       tr += '<i class="fas fa-minus-circle pull-right cmdAction cursor" data-action="remove"></i>';
       tr += '</td>';
@@ -271,4 +275,3 @@ function createState(cmdIdAct, actionCmd){
     }
   });
 }
-
