@@ -26,7 +26,8 @@
       "select":"seleccione",
       "Rechercher un equipement":"Buscar un equipo",
       "Supprimer une commande":"Borrar un pedido",
-      "Réussie":"Exitoso"
+      "Réussie":"Exitoso",
+      "Activer/désactiver toutes les commandes": "Activar/desactivar todos los controles"
    },
    "plugins\/State_Capturer\/desktop\/js\/State_Capturer.js":{
       "Nom de la commande":"Nombre de la orden",

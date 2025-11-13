@@ -26,7 +26,8 @@
       "select":"select",
       "Rechercher un equipement":"Search for an equipment",
       "Supprimer une commande":"Delete an order",
-      "Réussie":"Successful"
+      "Réussie":"Successful",
+      "Activer/désactiver toutes les commandes": "Enable/disable all commands"
    },
    "plugins\/State_Capturer\/desktop\/js\/State_Capturer.js":{
       "Nom de la commande":"Command Name",

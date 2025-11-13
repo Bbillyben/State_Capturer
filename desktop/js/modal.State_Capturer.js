@@ -200,3 +200,33 @@ $('#bt_save_conf').on('click',function(){
       
 
 })
+
+
+///// Gestion des checkbox global par commande 
+$('input.global_cmd_ckb').on('click change', function() {
+    var cmdId = $(this).data('cmdid'); 
+    var isChecked = $(this).is(':checked');
+
+    $("#table_cmd_" + cmdId + " td.SC_CB input[data-l1key='isActivated']").each(function() {
+        $(this).prop('checked', isChecked);
+    });
+});
+
+$('input.global_force_ckb').on('click change', function() {
+    var cmdId = $(this).data('cmdid'); 
+    var isChecked = $(this).is(':checked');
+
+    $("#table_cmd_" + cmdId + " td.SC_CB input[data-l1key='isForced']").each(function() {
+        $(this).prop('checked', isChecked);
+    });
+});
+
+
+$('#activ_all').on('click change', function() {
+    var cmdId = $(this).data('cmdid'); 
+    var isChecked = $(this).is(':checked');
+  console.log("Set all activation to : "+isChecked);
+    $("#md_modal td.SC_CB input[data-l1key='isActivated']").each(function() {
+        $(this).prop('checked', isChecked);
+    });
+});

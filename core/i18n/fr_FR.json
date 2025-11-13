@@ -25,7 +25,8 @@
 		"select" : "",
 		"Rechercher un equipement" : "",
 		"Supprimer une commande" : "",
-		"Réussie" : ""
+		"Réussie" : "",
+		"Activer/désactiver toutes les commandes": ""
 	},
 "plugins\/State_Capturer\/desktop\/js\/State_Capturer.js" : {
 		"Nom de la commande" : "",
