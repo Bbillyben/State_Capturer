@@ -32,7 +32,7 @@ if (!isConnect('admin')) {
     $conf=State_Capturer::get_state_configuration($id); 
 
 
-    echo '<div id="" class="col-xs-12 eqLogic">';
+    echo '<div class="col-xs-12 eqLogic">';
     
         echo '<div class="form-group">';
             echo '<label  class="col-xs-2 label_ca label_ca-blue">{{Etat}} :</label>';
@@ -46,7 +46,15 @@ if (!isConnect('admin')) {
             echo '<div id="alerte_message_ca" class="jqAlert alert-danger" style="width: 100%;display:none;">no alerte</div>';
 // les boutons        
         echo '</div>';
-        echo '<a class="btn btn-danger" id="bt_save_conf"><i class="fas fa-download"></i>{{Save}}</a>';
+            echo '<a class="btn btn-danger" id="bt_save_conf"><i class="fas fa-download"></i>{{Save}}</a>';
+              
+        echo '</div>';
+        // les CB pour activer/désactiver  
+        echo '<div class="col-xs-5">';
+        echo '<button class="btn" >';
+                echo '<input type="checkbox" id="activ_all" data-cmdId="'.$id.'" checked />';
+                echo '<label for="scales">{{Activer/désactiver toutes les commandes}}</label>';
+        echo '</button>';
         echo '</div>';
         foreach($conf as $eqCaptId=>$eqCaptDef){
             $eq=eqLogic::byId($eqCaptId);
@@ -67,15 +75,19 @@ if (!isConnect('admin')) {
                 echo '</div>';
             echo '<label  class=" label_ca"></label>';
             echo '<div id="table_modal_SC_'.$eqCaptId.'"  class="table-responsive">';
-					echo '<table id="table_cmd_"'.$eqCaptId.' class="table table-bordered table-condensed ui-sortable table_modal" data-l1key="'.$eqCaptId.'">';
+					echo '<table id="table_cmd_'.$eqCaptId.'" class="table table-bordered table-condensed ui-sortable table_modal" data-l1key="'.$eqCaptId.'">';
 						echo '<thead>';
 							echo '<tr>';
-                                echo '<th>{{Activation}}</th>';
+                                echo '<th>{{Activation}}  ';
+                                echo '<input type="checkbox" class="cmdInfoAttr global_cmd_ckb" data-cmdId="'.$eqCaptId.'" />';
+                                echo '</th>';
 								echo '<th>{{Id}}</th>';
 								echo '<th>{{Nom}}</th>';
 								echo '<th>{{Type}}</th>';
                                 echo '<th>{{Etat}}</th>';
-                                echo '<th>{{Force Update}}</th>';
+                                echo '<th>{{Force Update}}  ';
+                                echo '<input type="checkbox" class="cmdInfoAttr global_force_ckb" data-cmdId="'.$eqCaptId.'" />';
+                                echo '</th>';
 								echo '<th>{{Commande}}</th>';
 								echo '<th>{{Action}}</th>';
 							echo '</tr>';
