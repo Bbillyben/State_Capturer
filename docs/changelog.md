@@ -1,3 +1,7 @@
+
+### Nov 2025
+* add checkbox to select/unselect activation checkbox in state configuration, global or by equipment
+
 ### Feb 2022
 * add tabular support (v4.2) as well as card information in plugin equipement view
 
